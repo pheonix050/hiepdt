@@ -66,7 +66,7 @@ exports.form = (req, res) => {
 // Add new user
 exports.create = (req, res) => {
   const { first_name, last_name, email, phone, comments} = req.body 
-  const qr = client.query('INSERT INTO users (username,password,first_name, last_name, email, phone, comments) VALUES ($1, $2, $3, $4, $5,$6,$7)', ["abc","123456",first_name, last_name, email, phone, comments]);
+  const qr = client.query('INSERT INTO users (username,password,first_name, last_name, email, phone, comments) VALUES ($1, $2, $3, $4, $5,$6,$7)', [first_name,"123456",first_name, last_name, email, phone, comments]);
   const kq = qr.rows;
   let removedUser = req.query.removed;
     res.render('add-user', { kq, alert: `${first_name} has been created.` });
